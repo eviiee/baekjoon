@@ -1,7 +1,5 @@
-import sys
 from collections import deque
 from copy import deepcopy
-# read=sys.stdin.readline
 
 N,M = 0,0
 original_board = []
