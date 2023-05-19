@@ -10,7 +10,7 @@ def isPrime(num):
 
 def main():
     a,b = map(int,input().split())
-    if a<2: print(2)
+    if a<=2<=b: print(2)
     nums = [True for _ in range(b+1)]
     for i in range(a-a%2+1,b+b%2,2):
         if nums[i] == True and i>=2:
