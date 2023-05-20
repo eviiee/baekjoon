@@ -1,15 +1,20 @@
-x=int(input())
-t,f=0,0
-f+=(x//15)*3
-n=x%15
-v=False
-m=0
-for i in range(-1, n//5+1):
-    if x==4:break
-    nn=n-(5*i)
-    if nn%3==0:
-        v=True
-        m=i
-        t=nn//3
-f+=m
-print(t+f if v else -1)
+def main():
+    N = int(input())
+    c = [[-1,0] for _ in range(N+1)]
+    c[0][0] = 0
+    
+    for i in range(3,N+1):
+        if c[i-2][0] == c[i-3][0] == c[i-5][0] == -1 : continue
+        if c[i-2][0] > 0:
+            c[i][0] = c[i-2][0] - 1
+            c[i][1] = c[i-2][1] + 1
+        elif c[i-5][0] != -1 :
+            c[i][0] = c[i-5][0]
+            c[i][1] = c[i-5][1] + 1
+        elif c[i-3][0] != -1 :
+            c[i][0] = c[i-3][0] + 1
+            c[i][1] = c[i-3][1]
+
+    return sum(c[N])
+
+print (main())

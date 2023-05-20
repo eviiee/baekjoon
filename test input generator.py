@@ -9,16 +9,20 @@
 #     print()
 
 
-from collections import deque
+# from collections import deque
 
-def main():
-    queue = deque([])
-    queue.append(1)
-    queue.append(2)
-    test(queue)
-    print(queue.popleft())
+# def main():
+#     queue = deque([])
+#     queue.append(1)
+#     queue.append(2)
+#     test(queue)
+#     print(queue.popleft())
 
-def test(q):
-    q.popleft()
+# def test(q):
+#     q.popleft()
 
-main()
+# main()
+
+import itertools
+N,M=map(int,input().split())
+print(*[' '.join(map(str,x)) for x in itertools.permutations(range(1,N+1),M)],sep='\n')
