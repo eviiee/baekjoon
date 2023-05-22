@@ -1,0 +1,37 @@
+import sys
+from collections import deque
+read = sys.stdin.readline
+
+d = ['D','S','L','R']
+
+def bfs(f,t):
+    v = [-1] * 10001
+    h = [0] * 10001
+    v[f] = 's'
+    q = deque([f])
+    while q:
+        n = q.popleft()
+        d = (n * 2)%10000
+        s = ((n - 1)+10000)%10000
+        l = (n%1000)*10 + n//1000
+        r = (n%10)*1000 + n//10
+        p = [d,s,l,r]
+        for i in range(4):
+            x = p[i]
+            if v[x] == -1:
+                v[x] = n
+                h[x] = i
+                if x == t: return mr(x,v,h)
+                q.append(x)
+
+def mr(x,v,h):
+    r = []
+    while True:
+        if v[x] == 's': break
+        r.append(d[h[x]])
+        x=v[x]
+    return ''.join(reversed(r))
+
+for _ in range(int(read())):
+    a,b = map(int,read().split())
+    sys.stdout.write(bfs(a,b)+'\n')

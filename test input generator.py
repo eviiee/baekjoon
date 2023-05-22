@@ -1,0 +1,1 @@
+print('OOIOIOIOIIOII'.count('IOI'))
